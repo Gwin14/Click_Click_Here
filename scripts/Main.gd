@@ -11,10 +11,10 @@ var empresa_info = {
 	"funcionarios": ["João Silva", "Maria Souza", "Ana Pereira"]
 }
 
-@onready var lbl_texto = $QuadroSolicitacao/Label
+@onready var lbl_texto = $HUD/Label
 @onready var barra = $HUD/Seguranca
 @onready var feedback = $HUD/Feedback
-@onready var lbl_manual = $QuadroSolicitacao/lbl_manual  # 🔹 novo Label para exibir informações
+@onready var lbl_manual = $HUD/lbl_manual  # 🔹 novo Label para exibir informações
 
 func _ready():
 	carregar_solicitacoes()

@@ -14,20 +14,20 @@
 ### 5 Ameaças a Abordar:
 
 1. **📧 Phishing por E-mail**
-    - E-mails com links suspeitos, remetentes falsos, urgência artificial
-    - Pistas: domínio errado (@amaz0n.com), erros de português, pedidos urgentes de senha
+	- E-mails com links suspeitos, remetentes falsos, urgência artificial
+	- Pistas: domínio errado (@amaz0n.com), erros de português, pedidos urgentes de senha
 2. **🔑 Senhas Fracas**
-    - Funcionários solicitando resetar senha para algo simples
-    - Pistas: senha = "123456", "senha123", sem caracteres especiais
+	- Funcionários solicitando resetar senha para algo simples
+	- Pistas: senha = "123456", "senha123", sem caracteres especiais
 3. **💾 Dispositivos Externos Suspeitos**
-    - Pedidos para conectar pendrives, HDs externos desconhecidos
-    - Pistas: dispositivo encontrado no estacionamento, sem identificação, origem duvidosa
+	- Pedidos para conectar pendrives, HDs externos desconhecidos
+	- Pistas: dispositivo encontrado no estacionamento, sem identificação, origem duvidosa
 4. **🌐 Acesso a Sites Suspeitos**
-    - Solicitações para liberar sites no firewall
-    - Pistas: URLs encurtadas, sites sem HTTPS, domínios estranhos
+	- Solicitações para liberar sites no firewall
+	- Pistas: URLs encurtadas, sites sem HTTPS, domínios estranhos
 5. **📤 Compartilhamento Indevido**
-    - Pedidos para enviar dados confidenciais por canais inseguros
-    - Pistas: envio de senhas por WhatsApp, documentos para e-mails pessoais
+	- Pedidos para enviar dados confidenciais por canais inseguros
+	- Pistas: envio de senhas por WhatsApp, documentos para e-mails pessoais
 
 ### Elementos do Jogo (estilo Papers Please):
 

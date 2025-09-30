@@ -1,55 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=18 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
+[ext_resource type="Texture2D" uid="uid://d4n0twvna35ke" path="res://Assets/Windows_icons/Email.png" id="3_0bbpv"]
+[ext_resource type="Script" uid="uid://eqlah11h0qkw" path="res://scripts/email.gd" id="4_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://dmpfm8daiqq6g" path="res://Assets/Windows_icons/Checklist.png" id="5_c01mt"]
+[ext_resource type="Texture2D" uid="uid://cskwhjce4wkl" path="res://Assets/Windows_icons/xpwindow_horizontal.png" id="6_c01mt"]
+[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scenes/gradanddrop.gd" id="6_nxtc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bbpv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vcsgt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c01mt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxtc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlsqs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8u5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhr70"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp0k4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjd11"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlsqs"]
+bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1")
 
-[node name="QuadroSolicitacao" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.6
-offset_left = 50.0
-offset_top = 40.0
-offset_right = 50.0
-offset_bottom = 40.0
+[node name="XpWallpaper" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_rvslj")
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="QuadroSolicitacao"]
+[node name="Email" type="Button" parent="."]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Solicitação aparece aqui"
+offset_left = 69.0
+offset_top = 106.0
+offset_right = 1101.0
+offset_bottom = 1138.0
+scale = Vector2(0.12000167, 0.12000167)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vcsgt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c01mt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nxtc6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jlsqs")
+icon = ExtResource("3_0bbpv")
+icon_alignment = 1
+script = ExtResource("4_vcsgt")
 
-[node name="lbl_manual" type="Label" parent="QuadroSolicitacao"]
+[node name="Tarefas" type="Button" parent="."]
 layout_mode = 0
-offset_left = 726.0
-offset_top = 12.0
-offset_right = 766.0
-offset_bottom = 35.0
+offset_left = 69.0
+offset_top = 291.0
+offset_right = 1101.0
+offset_bottom = 1323.0
+scale = Vector2(0.12000167, 0.12000167)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8u5g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lhr70")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wp0k4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bjd11")
+icon = ExtResource("5_c01mt")
+icon_alignment = 1
 
-[node name="HUD" type="VBoxContainer" parent="."]
+[node name="HUD" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.6
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 479.0
-offset_top = 325.0
-offset_right = 661.0
-offset_bottom = 414.0
+offset_left = 328.0
+offset_top = 200.0
+offset_right = 1608.0
+offset_bottom = 957.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jlsqs")
 
-[node name="Seguranca" type="ProgressBar" parent="HUD"]
-layout_mode = 2
-value = 100.0
-
-[node name="Feedback" type="Label" parent="HUD"]
-layout_mode = 2
+[node name="Area_arrastar" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_right = 1270.0
+offset_bottom = 25.0
+script = ExtResource("6_nxtc6")
 
 [node name="Botoes" type="HBoxContainer" parent="HUD"]
-layout_mode = 2
+layout_mode = 0
+offset_left = 565.0
+offset_top = 648.0
+offset_right = 742.0
+offset_bottom = 679.0
 
 [node name="BtnAprovar" type="Button" parent="HUD/Botoes"]
 layout_mode = 2
@@ -58,6 +103,44 @@ text = "✅ Aprovar"
 [node name="BtnNegar" type="Button" parent="HUD/Botoes"]
 layout_mode = 2
 text = "❌ Negar"
+
+[node name="XpwindowHorizontal" type="Sprite2D" parent="HUD"]
+position = Vector2(637.99994, 378.50003)
+scale = Vector2(2.3837752, 2.4072022)
+texture = ExtResource("6_c01mt")
+
+[node name="Seguranca" type="ProgressBar" parent="HUD"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 56.0
+offset_right = 1215.0
+offset_bottom = 83.0
+value = 100.0
+
+[node name="Feedback" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 588.0
+offset_right = 1193.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 99.0
+offset_right = 976.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Solicitação aparece aqui"
+
+[node name="lbl_manual" type="Label" parent="HUD"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 1280.0
+offset_bottom = 143.0
 
 [connection signal="pressed" from="HUD/Botoes/BtnAprovar" to="." method="aprovar"]
 [connection signal="pressed" from="HUD/Botoes/BtnNegar" to="." method="negar"]
