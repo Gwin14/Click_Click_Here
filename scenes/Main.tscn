@@ -1,33 +1,43 @@
-[gd_scene load_steps=18 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=20 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
 [ext_resource type="Texture2D" uid="uid://d4n0twvna35ke" path="res://Assets/Windows_icons/Email.png" id="3_0bbpv"]
-[ext_resource type="Script" uid="uid://eqlah11h0qkw" path="res://scripts/email.gd" id="4_vcsgt"]
+[ext_resource type="Script" uid="uid://eqlah11h0qkw" path="res://scripts/desktop_icons.gd" id="4_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://dmpfm8daiqq6g" path="res://Assets/Windows_icons/Checklist.png" id="5_c01mt"]
+[ext_resource type="Texture2D" uid="uid://quu2th545lkk" path="res://Assets/Windows_icons/Power.png" id="5_q8u5g"]
 [ext_resource type="Texture2D" uid="uid://cskwhjce4wkl" path="res://Assets/Windows_icons/xpwindow_horizontal.png" id="6_c01mt"]
 [ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scenes/gradanddrop.gd" id="6_nxtc6"]
+[ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scenes/desligar.gd" id="6_wp0k4"]
+[ext_resource type="Texture2D" uid="uid://j6p2sox11m4l" path="res://Assets/Windows_icons/My Music.png" id="7_lhr70"]
+[ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_jlsqs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bbpv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vcsgt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp0k4"]
+bg_color = Color(0, 0.7882353, 0.8235294, 0.5019608)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c01mt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmy6f"]
+bg_color = Color(0, 0.7882353, 0.8235294, 0.5019608)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxtc6"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlsqs"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8u5g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhr70"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjd11"]
+bg_color = Color(0.27054265, 0.9621605, 0.9999997, 0.38431373)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp0k4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjd11"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlsqs"]
 bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
+bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -39,38 +49,71 @@ position = Vector2(960, 540)
 texture = ExtResource("2_rvslj")
 metadata/_edit_lock_ = true
 
-[node name="Email" type="Button" parent="."]
+[node name="Email" type="Button" parent="." node_paths=PackedStringArray("hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 106.0
 offset_right = 1101.0
 offset_bottom = 1138.0
-scale = Vector2(0.12000167, 0.12000167)
+scale = Vector2(0.08000228, 0.08000228)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_vcsgt")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_c01mt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp0k4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qmy6f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nxtc6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jlsqs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("3_0bbpv")
 icon_alignment = 1
 script = ExtResource("4_vcsgt")
+hud = NodePath("../HUD_email")
+
+[node name="Desligar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1778.0
+offset_top = 949.0
+offset_right = 2810.0
+offset_bottom = 1981.0
+scale = Vector2(0.08000228, 0.08000228)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp0k4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qmy6f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nxtc6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
+icon = ExtResource("5_q8u5g")
+icon_alignment = 1
+script = ExtResource("6_wp0k4")
 
 [node name="Tarefas" type="Button" parent="."]
 layout_mode = 0
 offset_left = 69.0
-offset_top = 291.0
+offset_top = 231.0
 offset_right = 1101.0
-offset_bottom = 1323.0
-scale = Vector2(0.12000167, 0.12000167)
+offset_bottom = 1263.0
+scale = Vector2(0.08000228, 0.08000228)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8u5g")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_lhr70")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp0k4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qmy6f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wp0k4")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bjd11")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("5_c01mt")
 icon_alignment = 1
+script = ExtResource("4_vcsgt")
 
-[node name="HUD" type="Panel" parent="."]
+[node name="Musica" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 352.00003
+offset_right = 1101.0
+offset_bottom = 1384.0
+scale = Vector2(0.08000228, 0.08000228)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0bbpv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp0k4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qmy6f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wp0k4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
+icon = ExtResource("7_lhr70")
+icon_alignment = 1
+
+[node name="HUD_email" type="Panel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -83,33 +126,33 @@ offset_right = 1608.0
 offset_bottom = 957.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jlsqs")
 
-[node name="Area_arrastar" type="Control" parent="HUD"]
+[node name="Area_arrastar" type="Control" parent="HUD_email"]
 anchors_preset = 0
 offset_right = 1270.0
 offset_bottom = 25.0
 script = ExtResource("6_nxtc6")
 
-[node name="Botoes" type="HBoxContainer" parent="HUD"]
+[node name="Botoes" type="HBoxContainer" parent="HUD_email"]
 layout_mode = 0
 offset_left = 565.0
 offset_top = 648.0
 offset_right = 742.0
 offset_bottom = 679.0
 
-[node name="BtnAprovar" type="Button" parent="HUD/Botoes"]
+[node name="BtnAprovar" type="Button" parent="HUD_email/Botoes"]
 layout_mode = 2
 text = "✅ Aprovar"
 
-[node name="BtnNegar" type="Button" parent="HUD/Botoes"]
+[node name="BtnNegar" type="Button" parent="HUD_email/Botoes"]
 layout_mode = 2
 text = "❌ Negar"
 
-[node name="XpwindowHorizontal" type="Sprite2D" parent="HUD"]
+[node name="XpwindowHorizontal" type="Sprite2D" parent="HUD_email"]
 position = Vector2(637.99994, 378.50003)
 scale = Vector2(2.3837752, 2.4072022)
 texture = ExtResource("6_c01mt")
 
-[node name="Seguranca" type="ProgressBar" parent="HUD"]
+[node name="Seguranca" type="ProgressBar" parent="HUD_email"]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 56.0
@@ -117,7 +160,7 @@ offset_right = 1215.0
 offset_bottom = 83.0
 value = 100.0
 
-[node name="Feedback" type="Label" parent="HUD"]
+[node name="Feedback" type="Label" parent="HUD_email"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 588.0
@@ -127,7 +170,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Label" type="Label" parent="HUD_email"]
 layout_mode = 0
 offset_left = 61.0
 offset_top = 99.0
@@ -136,11 +179,32 @@ offset_bottom = 295.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Solicitação aparece aqui"
 
-[node name="lbl_manual" type="Label" parent="HUD"]
+[node name="lbl_manual" type="Label" parent="HUD_email"]
 layout_mode = 0
 offset_top = 120.0
 offset_right = 1280.0
 offset_bottom = 143.0
 
-[connection signal="pressed" from="HUD/Botoes/BtnAprovar" to="." method="aprovar"]
-[connection signal="pressed" from="HUD/Botoes/BtnNegar" to="." method="negar"]
+[node name="HUD_tasks" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1404.0
+offset_top = 155.0
+offset_right = 1843.0
+offset_bottom = 616.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
+
+[node name="Area_arrastar2" type="Control" parent="HUD_tasks"]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+script = ExtResource("6_nxtc6")
+
+[node name="XpwindowSquare" type="Sprite2D" parent="HUD_tasks"]
+position = Vector2(220, 232)
+texture = ExtResource("8_jlsqs")
+
+[connection signal="pressed" from="HUD_email/Botoes/BtnAprovar" to="." method="aprovar"]
+[connection signal="pressed" from="HUD_email/Botoes/BtnNegar" to="." method="negar"]

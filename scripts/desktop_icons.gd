@@ -1,5 +1,8 @@
 extends Button
 
+# HUD definido no editor
+@export var hud: Control
+
 var last_click_time := 0.0
 var double_click_max_delay := 0.3 # tempo máximo entre cliques (segundos)
 
@@ -13,5 +16,5 @@ func _on_button_pressed():
 	last_click_time = current_time
 
 func _on_double_click():
-	# aqui você pode exibir sua UI
-	$"../HUD".visible = true
+	if hud:
+		hud.visible = true
