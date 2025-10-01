@@ -14,7 +14,7 @@ var empresa_info = {
 @onready var lbl_texto = $HUD_email/Label
 @onready var barra = $HUD_email/Seguranca
 @onready var feedback = $HUD_email/Feedback
-@onready var lbl_manual = $HUD_email/lbl_manual  # 🔹 novo Label para exibir informações
+@onready var lbl_manual = $HUD_tasks/lbl_manual  # 🔹 novo Label para exibir informações
 
 func _ready():
 	carregar_solicitacoes()

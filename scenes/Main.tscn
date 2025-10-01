@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dmpfm8daiqq6g" path="res://Assets/Windows_icons/Checklist.png" id="5_c01mt"]
 [ext_resource type="Texture2D" uid="uid://quu2th545lkk" path="res://Assets/Windows_icons/Power.png" id="5_q8u5g"]
 [ext_resource type="Texture2D" uid="uid://cskwhjce4wkl" path="res://Assets/Windows_icons/xpwindow_horizontal.png" id="6_c01mt"]
-[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scenes/gradanddrop.gd" id="6_nxtc6"]
-[ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scenes/desligar.gd" id="6_wp0k4"]
+[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scripts/gradanddrop.gd" id="6_nxtc6"]
+[ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scripts/desligar.gd" id="6_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://j6p2sox11m4l" path="res://Assets/Windows_icons/My Music.png" id="7_lhr70"]
 [ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_jlsqs"]
 
@@ -82,7 +82,7 @@ icon = ExtResource("5_q8u5g")
 icon_alignment = 1
 script = ExtResource("6_wp0k4")
 
-[node name="Tarefas" type="Button" parent="."]
+[node name="Tarefas" type="Button" parent="." node_paths=PackedStringArray("hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 231.0
@@ -97,6 +97,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("5_c01mt")
 icon_alignment = 1
 script = ExtResource("4_vcsgt")
+hud = NodePath("../HUD_tasks")
 
 [node name="Musica" type="Button" parent="."]
 layout_mode = 0
@@ -126,9 +127,15 @@ offset_right = 1608.0
 offset_bottom = 957.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jlsqs")
 
+[node name="BotaoFechar" type="Button" parent="HUD_email"]
+layout_mode = 0
+offset_left = 1251.0
+offset_right = 1275.0
+offset_bottom = 25.0
+
 [node name="Area_arrastar" type="Control" parent="HUD_email"]
 anchors_preset = 0
-offset_right = 1270.0
+offset_right = 1244.0
 offset_bottom = 25.0
 script = ExtResource("6_nxtc6")
 
@@ -179,12 +186,6 @@ offset_bottom = 295.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Solicitação aparece aqui"
 
-[node name="lbl_manual" type="Label" parent="HUD_email"]
-layout_mode = 0
-offset_top = 120.0
-offset_right = 1280.0
-offset_bottom = 143.0
-
 [node name="HUD_tasks" type="Panel" parent="."]
 visible = false
 layout_mode = 0
@@ -194,7 +195,7 @@ offset_right = 1843.0
 offset_bottom = 616.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
 
-[node name="Area_arrastar2" type="Control" parent="HUD_tasks"]
+[node name="Area_arrastar" type="Control" parent="HUD_tasks"]
 anchors_preset = 0
 offset_left = 1.0
 offset_top = 2.0
@@ -202,9 +203,26 @@ offset_right = 437.0
 offset_bottom = 27.0
 script = ExtResource("6_nxtc6")
 
+[node name="BotaoFechar" type="Button" parent="HUD_tasks"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+
 [node name="XpwindowSquare" type="Sprite2D" parent="HUD_tasks"]
 position = Vector2(220, 232)
 texture = ExtResource("8_jlsqs")
 
+[node name="lbl_manual" type="Label" parent="HUD_tasks"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 44.0
+offset_right = 422.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="HUD_email/BotaoFechar" to="HUD_email/Area_arrastar" method="_on_botao_pressed"]
 [connection signal="pressed" from="HUD_email/Botoes/BtnAprovar" to="." method="aprovar"]
 [connection signal="pressed" from="HUD_email/Botoes/BtnNegar" to="." method="negar"]
+[connection signal="pressed" from="HUD_tasks/BotaoFechar" to="HUD_tasks/Area_arrastar" method="_on_botao_pressed"]

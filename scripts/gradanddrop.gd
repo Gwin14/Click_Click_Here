@@ -23,3 +23,10 @@ func _gui_input(event):
 		new_pos.x = clamp(new_pos.x, 0, area_size.x - parent_panel.size.x)
 		new_pos.y = clamp(new_pos.y, 0, area_size.y - parent_panel.size.y)
 		parent_panel.global_position = new_pos
+
+func _on_botao_pressed():
+	# Pega o pai do botão
+	var parent = get_parent()
+	
+	# Deixa invisível
+	parent.visible = false # esconde o nó onde o script está
