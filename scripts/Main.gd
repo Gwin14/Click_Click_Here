@@ -12,51 +12,34 @@ var empresa_info = {
 }
 
 @onready var lbl_texto = $HUD_email/Label
+@onready var avatar = $HUD_email/Avatar
 @onready var barra = $HUD_email/Seguranca
 @onready var feedback = $HUD_email/Feedback
-@onready var lbl_manual = $HUD_tasks/lbl_manual  # 🔹 novo Label para exibir informações
+@onready var lbl_manual = $HUD_tasks/lbl_manual
+@onready var http_request: HTTPRequest = $HTTPRequest
+
+var state := "idle"
 
 func _ready():
+	http_request.request_completed.connect(_on_request_completed)
 	carregar_solicitacoes()
 	mostrar_solicitacao()
-	mostrar_manual()   # mostra as infos desde o início
+	mostrar_manual()
 
 func carregar_solicitacoes():
-	solicitacoes = [
-		{
-			"tipo": "email",
-			"remetente": "suporte@amaz0n-security.com",
-			"texto": "De: suporte@amaz0n-security.com\nAssunto: URGENTE! Confirme seus dados...",
-			"feedback_ok": "✅ CORRETO! Esse e-mail era phishing!",
-			"feedback_err": "❌ ERRO! Você aprovou um e-mail fraudulento!\n📌 Dica: O domínio oficial é @empresa.com.br"
-		},
-		{
-			"tipo": "email",
-			"remetente": "suporte@empresa.com.br",
-			"texto": "De: suporte@empresa.com.br\nAssunto: Aviso de manutenção.\nPrezado colaborador...",
-			"feedback_ok": "✅ CORRETO! Este é um e-mail legítimo.",
-			"feedback_err": "❌ ERRO! Você negou um e-mail verdadeiro.\n📌 Dica: Compare com a lista de e-mails válidos no manual."
-		},
-		{
-			"tipo": "funcionario",
-			"nome": "Carlos Souza",
-			"texto": "Pedido: Funcionário Carlos Souza solicita acesso ao sistema financeiro.",
-			"feedback_ok": "✅ CORRETO! Esse funcionário não existe na base, acesso negado.",
-			"feedback_err": "❌ ERRO! Você aprovou acesso de um funcionário inexistente!\n📌 Dica: Consulte a lista de funcionários autorizados."
-		},
-		{
-			"tipo": "funcionario",
-			"nome": "Maria Souza",
-			"texto": "Pedido: Funcionária Maria Souza solicita reset de senha.",
-			"feedback_ok": "✅ CORRETO! Funcionária válida, pedido aceito.",
-			"feedback_err": "❌ ERRO! Você negou o pedido de uma funcionária legítima.\n📌 Dica: Verifique nomes autorizados no manual."
-		}
-	]
+	var dados = load("res://scripts/solicitacoes.gd")
+	solicitacoes = dados.LISTA.duplicate()
+	solicitacoes.shuffle()
 
 func mostrar_solicitacao():
 	if indice_atual < solicitacoes.size():
-		lbl_texto.text = solicitacoes[indice_atual]["texto"]
+		var atual = solicitacoes[indice_atual]
+		lbl_texto.text = atual["texto"]
 		feedback.text = ""
+
+		# 🔹 toda vez que mostrar solicitação → buscar nova imagem
+		state = "fetch_json"
+		http_request.request("https://randomuser.me/api/")
 	else:
 		game_over()
 
@@ -84,7 +67,6 @@ func verificar(escolha):
 	await get_tree().create_timer(2.0).timeout
 	mostrar_solicitacao()
 
-# 🔹 Exibir informações oficiais no Label
 func mostrar_manual():
 	var texto = "📘 Manual da Empresa\n"
 	texto += "Domínio oficial: " + empresa_info["dominio"] + "\n\n"
@@ -96,7 +78,6 @@ func mostrar_manual():
 		texto += " - " + f + "\n"
 	lbl_manual.text = texto
 
-# 🔹 Função que valida a solicitação contra as regras da empresa
 func validar(req):
 	match req["tipo"]:
 		"email":
@@ -119,3 +100,28 @@ func validar(req):
 func game_over():
 	lbl_texto.text = "🚨 FIM DE JOGO!"
 	feedback.text = "Obrigado por jogar Cyber Guard!"
+
+# 🔹 callback do HTTPRequest
+func _on_request_completed(result, response_code, headers, body):
+	if result != OK or response_code != 200:
+		print("Erro na requisição:", result, response_code)
+		return
+
+	if state == "fetch_json":
+		var data = JSON.parse_string(body.get_string_from_utf8())
+		if typeof(data) == TYPE_DICTIONARY and data.has("results"):
+			var img_url = data["results"][0]["picture"]["large"]
+			state = "fetch_image"
+			http_request.request(img_url)
+
+	elif state == "fetch_image":
+		var img = Image.new()
+		var err = img.load_jpg_from_buffer(body)
+		if err != OK:
+			err = img.load_png_from_buffer(body)
+		if err == OK:
+			var tex = ImageTexture.create_from_image(img)
+			avatar.texture = tex
+		else:
+			print("Erro ao carregar imagem:", err)
+		state = "idle"

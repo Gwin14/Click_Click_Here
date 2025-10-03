@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=31 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
@@ -11,12 +11,15 @@
 [ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scripts/desligar.gd" id="6_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://j6p2sox11m4l" path="res://Assets/Windows_icons/My Music.png" id="7_lhr70"]
 [ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_jlsqs"]
+[ext_resource type="Shader" uid="uid://sa5ogqcnn6hm" path="res://Shaders/profile.gdshader" id="11_bb450"]
 [ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scenes/hud_musicas.gd" id="12_bjd11"]
 [ext_resource type="AudioStream" uid="uid://duyt1kfvm7lss" path="res://Musicas/musica1.wav" id="13_3p2gp"]
 [ext_resource type="AudioStream" uid="uid://dlsvofemm3v5" path="res://Musicas/musica2.wav" id="14_cvmbd"]
 [ext_resource type="AudioStream" uid="uid://wplkwsryjmmy" path="res://Musicas/musica3.wav" id="15_ft6cd"]
 [ext_resource type="Texture2D" uid="uid://yej8c1t5c70t" path="res://Assets/Windows_icons/Stop.png" id="16_ft6cd"]
 [ext_resource type="Texture2D" uid="uid://doeccmiek3gsw" path="res://Assets/Windows_icons/Play.png" id="17_bb450"]
+[ext_resource type="Shader" uid="uid://cyylhpgyhl8wk" path="res://Shaders/xp.gdshader" id="19_nfivy"]
+[ext_resource type="Script" uid="uid://diyfa0pqk6dyb" path="res://Shaders/xpshader.gd" id="20_1nqs0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bbpv"]
 
@@ -39,11 +42,19 @@ shadow_color = Color(0, 0, 0, 0.28235295)
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfivy"]
+shader = ExtResource("11_bb450")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
 bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
 shadow_color = Color(0, 0, 0, 0.28235295)
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nqs0"]
+shader = ExtResource("19_nfivy")
+shader_parameter/wave_speed = 0.3
+shader_parameter/wave_amplitude = 0.005
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -180,19 +191,29 @@ layout_mode = 0
 offset_left = 99.0
 offset_top = 588.0
 offset_right = 1193.0
-offset_bottom = 611.0
+offset_bottom = 637.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="HUD_email"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 99.0
-offset_right = 976.0
-offset_bottom = 295.0
+offset_left = 344.0
+offset_top = 105.0
+offset_right = 1176.0
+offset_bottom = 630.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Solicitação aparece aqui"
+autowrap_mode = 3
+
+[node name="Avatar" type="TextureRect" parent="HUD_email"]
+material = SubResource("ShaderMaterial_nfivy")
+layout_mode = 0
+offset_left = 66.0
+offset_top = 118.0
+offset_right = 285.0
+offset_bottom = 302.0
 
 [node name="HUD_tasks" type="Panel" parent="."]
 visible = false
@@ -319,6 +340,18 @@ theme_override_font_sizes/font_size = 286
 text = "Galaxy"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HUD_musicas"]
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Control" type="ColorRect" parent="."]
+modulate = Color(0.5686275, 0.5176471, 0.5176471, 1)
+material = SubResource("ShaderMaterial_1nqs0")
+layout_mode = 0
+offset_right = 1927.0
+offset_bottom = 1086.0
+mouse_filter = 2
+script = ExtResource("20_1nqs0")
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="HUD_email/BotaoFechar" to="HUD_email/Area_arrastar" method="_on_botao_pressed"]
 [connection signal="pressed" from="HUD_email/Botoes/BtnAprovar" to="." method="aprovar"]
