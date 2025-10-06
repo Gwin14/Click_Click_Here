@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=44 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scripts/desligar.gd" id="6_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://j6p2sox11m4l" path="res://Assets/Windows_icons/My Music.png" id="7_lhr70"]
 [ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_jlsqs"]
+[ext_resource type="Texture2D" uid="uid://dln64td86wcle" path="res://Assets/Windows_icons/Pop up allowed.png" id="10_yxlcp"]
 [ext_resource type="Shader" uid="uid://sa5ogqcnn6hm" path="res://Shaders/profile.gdshader" id="11_bb450"]
+[ext_resource type="Texture2D" uid="uid://djof03ey2qs0w" path="res://Assets/Windows_icons/Pop up blocked.png" id="11_ebg2g"]
 [ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scenes/hud_musicas.gd" id="12_bjd11"]
 [ext_resource type="AudioStream" uid="uid://duyt1kfvm7lss" path="res://Musicas/musica1.wav" id="13_3p2gp"]
 [ext_resource type="AudioStream" uid="uid://dlsvofemm3v5" path="res://Musicas/musica2.wav" id="14_cvmbd"]
@@ -41,6 +43,28 @@ bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
 shadow_color = Color(0, 0, 0, 0.28235295)
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxlcp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebg2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ofn6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa025"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36rkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs0b5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma7h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2s0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsxep"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0vrg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg70y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfivy"]
 shader = ExtResource("11_bb450")
@@ -134,7 +158,6 @@ script = ExtResource("4_vcsgt")
 hud = NodePath("../HUD_musicas")
 
 [node name="HUD_email" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.6
@@ -158,20 +181,40 @@ offset_right = 1244.0
 offset_bottom = 25.0
 script = ExtResource("6_nxtc6")
 
-[node name="Botoes" type="HBoxContainer" parent="HUD_email"]
+[node name="Botoes" type="Panel" parent="HUD_email"]
 layout_mode = 0
-offset_left = 565.0
-offset_top = 648.0
-offset_right = 742.0
-offset_bottom = 679.0
+offset_left = 544.0
+offset_top = 593.0
+offset_right = 2773.0
+offset_bottom = 1625.0
+scale = Vector2(0.08182917, 0.08182917)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yxlcp")
 
 [node name="BtnAprovar" type="Button" parent="HUD_email/Botoes"]
-layout_mode = 2
+layout_mode = 0
+offset_left = -293.29395
+offset_right = 826.70605
+offset_bottom = 1032.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ebg2g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ofn6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xa025")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_36rkl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fs0b5")
 text = "✅ Aprovar"
+icon = ExtResource("10_yxlcp")
 
 [node name="BtnNegar" type="Button" parent="HUD_email/Botoes"]
-layout_mode = 2
+layout_mode = 0
+offset_left = 1356.4843
+offset_right = 2461.4844
+offset_bottom = 1032.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ma7h6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e2s0e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gsxep")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v0vrg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg70y")
 text = "❌ Negar"
+icon = ExtResource("11_ebg2g")
 
 [node name="XpwindowHorizontal" type="Sprite2D" parent="HUD_email"]
 position = Vector2(637.99994, 378.50003)
@@ -189,9 +232,9 @@ value = 100.0
 [node name="Feedback" type="Label" parent="HUD_email"]
 layout_mode = 0
 offset_left = 99.0
-offset_top = 588.0
+offset_top = 686.0
 offset_right = 1193.0
-offset_bottom = 637.0
+offset_bottom = 735.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -344,6 +387,7 @@ text = "Galaxy"
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="Control" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.5686275, 0.5176471, 0.5176471, 1)
 material = SubResource("ShaderMaterial_1nqs0")
 layout_mode = 0

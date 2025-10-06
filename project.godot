@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Cyber Guard"
+config/name="Click! Click here!"
 config/description="Um jogo em que o jogador inspeciona email e pedidos de acesso suspeitos em uma organização."
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
