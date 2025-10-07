@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=45 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dln64td86wcle" path="res://Assets/Windows_icons/Pop up allowed.png" id="10_yxlcp"]
 [ext_resource type="Shader" uid="uid://sa5ogqcnn6hm" path="res://Shaders/profile.gdshader" id="11_bb450"]
 [ext_resource type="Texture2D" uid="uid://djof03ey2qs0w" path="res://Assets/Windows_icons/Pop up blocked.png" id="11_ebg2g"]
-[ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scenes/hud_musicas.gd" id="12_bjd11"]
+[ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scripts/hud_musicas.gd" id="12_bjd11"]
 [ext_resource type="AudioStream" uid="uid://duyt1kfvm7lss" path="res://Musicas/musica1.wav" id="13_3p2gp"]
 [ext_resource type="AudioStream" uid="uid://dlsvofemm3v5" path="res://Musicas/musica2.wav" id="14_cvmbd"]
 [ext_resource type="AudioStream" uid="uid://wplkwsryjmmy" path="res://Musicas/musica3.wav" id="15_ft6cd"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://doeccmiek3gsw" path="res://Assets/Windows_icons/Play.png" id="17_bb450"]
 [ext_resource type="Shader" uid="uid://cyylhpgyhl8wk" path="res://Shaders/xp.gdshader" id="19_nfivy"]
 [ext_resource type="Script" uid="uid://diyfa0pqk6dyb" path="res://Shaders/xpshader.gd" id="20_1nqs0"]
+[ext_resource type="Texture2D" uid="uid://bb1r027c3p4c2" path="res://Assets/Windows_icons/New Contact.png" id="23_ebg2g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bbpv"]
 
@@ -252,12 +253,18 @@ text = "Solicitação aparece aqui"
 autowrap_mode = 3
 
 [node name="Avatar" type="TextureRect" parent="HUD_email"]
+visible = false
 material = SubResource("ShaderMaterial_nfivy")
 layout_mode = 0
 offset_left = 66.0
 offset_top = 118.0
 offset_right = 285.0
 offset_bottom = 302.0
+
+[node name="NewContact" type="Sprite2D" parent="HUD_email"]
+position = Vector2(184, 240.00003)
+scale = Vector2(0.27294922, 0.27294922)
+texture = ExtResource("23_ebg2g")
 
 [node name="HUD_tasks" type="Panel" parent="."]
 visible = false
