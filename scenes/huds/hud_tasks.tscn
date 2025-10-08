@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://isckq06yhwp5"]
+
+[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scripts/gradanddrop.gd" id="1_5n5du"]
+[ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="2_yyg2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
+bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[node name="HUD_tasks" type="Panel"]
+visible = false
+offset_left = 1404.0
+offset_top = 155.0
+offset_right = 1843.0
+offset_bottom = 616.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
+
+[node name="Area_arrastar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+script = ExtResource("1_5n5du")
+
+[node name="BotaoFechar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+
+[node name="XpwindowSquare" type="Sprite2D" parent="."]
+position = Vector2(220, 232)
+texture = ExtResource("2_yyg2s")
+
+[node name="lbl_manual" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 44.0
+offset_right = 422.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="BotaoFechar" to="Area_arrastar" method="_on_botao_pressed"]

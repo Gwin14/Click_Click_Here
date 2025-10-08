@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx4eyxyibkey3"]
+
+[ext_resource type="Script" uid="uid://t6e8ejh037dd" path="res://scripts/start_menu.gd" id="1_nxjfj"]
+[ext_resource type="Texture2D" uid="uid://dy6fhscujqvw5" path="res://Assets/yellow_wallpaper.png" id="1_ouf4f"]
+[ext_resource type="Shader" uid="uid://cyylhpgyhl8wk" path="res://Shaders/xp.gdshader" id="2_m7x51"]
+[ext_resource type="Texture2D" uid="uid://c7tyjvtdv7jpr" path="res://Assets/Windows_icons/Whistler - Forward.png" id="3_4v6gu"]
+[ext_resource type="Script" uid="uid://diyfa0pqk6dyb" path="res://Shaders/xpshader.gd" id="3_h61rw"]
+[ext_resource type="Texture2D" uid="uid://ck5mjwafamqut" path="res://Assets/gameIcon.png" id="4_h61rw"]
+[ext_resource type="Texture2D" uid="uid://cbalcxehaub42" path="res://Assets/Windows_icons/Whistler - IE Stop.png" id="4_nxjfj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcv5n"]
+shader = ExtResource("2_m7x51")
+shader_parameter/wave_speed = 0.3
+shader_parameter/wave_amplitude = 0.005
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nxjfj")
+
+[node name="Wallpaper" type="CanvasGroup" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(472, 200)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper2" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(1312, 200)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper3" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(472, 595.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper4" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(1312, 595.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper5" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(472, 995.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper6" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(1312, 995.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper7" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(2159, 200)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper8" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(2159, 595.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="YellowWallpaper9" type="Sprite2D" parent="Wallpaper"]
+position = Vector2(2159, 995.5)
+texture = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="GameIcon" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5199988, 0.5199988)
+texture = ExtResource("4_h61rw")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 990.0
+offset_top = 832.0
+offset_right = 2014.0
+offset_bottom = 1856.0
+scale = Vector2(0.1200012, 0.1200012)
+texture_normal = ExtResource("3_4v6gu")
+
+[node name="Exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 832.0
+offset_right = 1830.0
+offset_bottom = 1856.0
+scale = Vector2(0.1200012, 0.1200012)
+texture_normal = ExtResource("4_nxjfj")
+
+[node name="Control" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0.5686275, 0.5176471, 0.5176471, 1)
+material = SubResource("ShaderMaterial_fcv5n")
+layout_mode = 0
+offset_right = 1927.0
+offset_bottom = 1086.0
+mouse_filter = 2
+script = ExtResource("3_h61rw")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

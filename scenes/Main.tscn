@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=21 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
@@ -6,23 +6,13 @@
 [ext_resource type="Script" uid="uid://eqlah11h0qkw" path="res://scripts/desktop_icons.gd" id="4_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://dmpfm8daiqq6g" path="res://Assets/Windows_icons/Checklist.png" id="5_c01mt"]
 [ext_resource type="Texture2D" uid="uid://quu2th545lkk" path="res://Assets/Windows_icons/Power.png" id="5_q8u5g"]
-[ext_resource type="Texture2D" uid="uid://cskwhjce4wkl" path="res://Assets/Windows_icons/xpwindow_horizontal.png" id="6_c01mt"]
-[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scripts/gradanddrop.gd" id="6_nxtc6"]
 [ext_resource type="Script" uid="uid://duooftygv77vk" path="res://scripts/desligar.gd" id="6_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://j6p2sox11m4l" path="res://Assets/Windows_icons/My Music.png" id="7_lhr70"]
-[ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_jlsqs"]
-[ext_resource type="Texture2D" uid="uid://dln64td86wcle" path="res://Assets/Windows_icons/Pop up allowed.png" id="10_yxlcp"]
-[ext_resource type="Shader" uid="uid://sa5ogqcnn6hm" path="res://Shaders/profile.gdshader" id="11_bb450"]
-[ext_resource type="Texture2D" uid="uid://djof03ey2qs0w" path="res://Assets/Windows_icons/Pop up blocked.png" id="11_ebg2g"]
-[ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scripts/hud_musicas.gd" id="12_bjd11"]
-[ext_resource type="AudioStream" uid="uid://duyt1kfvm7lss" path="res://Musicas/musica1.wav" id="13_3p2gp"]
-[ext_resource type="AudioStream" uid="uid://dlsvofemm3v5" path="res://Musicas/musica2.wav" id="14_cvmbd"]
-[ext_resource type="AudioStream" uid="uid://wplkwsryjmmy" path="res://Musicas/musica3.wav" id="15_ft6cd"]
-[ext_resource type="Texture2D" uid="uid://yej8c1t5c70t" path="res://Assets/Windows_icons/Stop.png" id="16_ft6cd"]
-[ext_resource type="Texture2D" uid="uid://doeccmiek3gsw" path="res://Assets/Windows_icons/Play.png" id="17_bb450"]
+[ext_resource type="PackedScene" uid="uid://b0acpq3neq8qb" path="res://scenes/huds/hud_email.tscn" id="9_qmy6f"]
+[ext_resource type="PackedScene" uid="uid://isckq06yhwp5" path="res://scenes/huds/hud_tasks.tscn" id="10_mwfav"]
+[ext_resource type="PackedScene" uid="uid://bk08v1b8xfb2r" path="res://scenes/huds/hud_musicas.tscn" id="11_3p2gp"]
 [ext_resource type="Shader" uid="uid://cyylhpgyhl8wk" path="res://Shaders/xp.gdshader" id="19_nfivy"]
 [ext_resource type="Script" uid="uid://diyfa0pqk6dyb" path="res://Shaders/xpshader.gd" id="20_1nqs0"]
-[ext_resource type="Texture2D" uid="uid://bb1r027c3p4c2" path="res://Assets/Windows_icons/New Contact.png" id="23_ebg2g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bbpv"]
 
@@ -38,43 +28,6 @@ bg_color = Color(0, 0.7882353, 0.8235294, 0.5019608)
 bg_color = Color(0.27054265, 0.9621605, 0.9999997, 0.38431373)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp0k4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlsqs"]
-bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
-shadow_color = Color(0, 0, 0, 0.28235295)
-shadow_size = 10
-shadow_offset = Vector2(10, 10)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxlcp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebg2g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ofn6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa025"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36rkl"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs0b5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma7h6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2s0e"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsxep"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0vrg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg70y"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfivy"]
-shader = ExtResource("11_bb450")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
-bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
-shadow_color = Color(0, 0, 0, 0.28235295)
-shadow_size = 10
-shadow_offset = Vector2(10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nqs0"]
 shader = ExtResource("19_nfivy")
@@ -106,7 +59,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("3_0bbpv")
 icon_alignment = 1
 script = ExtResource("4_vcsgt")
-hud = NodePath("../HUD_email")
+hud = NodePath("")
 
 [node name="Desligar" type="Button" parent="."]
 layout_mode = 0
@@ -139,7 +92,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("5_c01mt")
 icon_alignment = 1
 script = ExtResource("4_vcsgt")
-hud = NodePath("../HUD_tasks")
+hud = NodePath("")
 
 [node name="Musica" type="Button" parent="." node_paths=PackedStringArray("hud")]
 layout_mode = 0
@@ -156,241 +109,17 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_bjd11")
 icon = ExtResource("7_lhr70")
 icon_alignment = 1
 script = ExtResource("4_vcsgt")
-hud = NodePath("../HUD_musicas")
+hud = NodePath("")
 
-[node name="HUD_email" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.6
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 328.0
-offset_top = 200.0
-offset_right = 1608.0
-offset_bottom = 957.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jlsqs")
-
-[node name="BotaoFechar" type="Button" parent="HUD_email"]
+[node name="HUD_email" parent="." instance=ExtResource("9_qmy6f")]
 layout_mode = 0
-offset_left = 1251.0
-offset_right = 1275.0
-offset_bottom = 25.0
-
-[node name="Area_arrastar" type="Control" parent="HUD_email"]
 anchors_preset = 0
-offset_right = 1244.0
-offset_bottom = 25.0
-script = ExtResource("6_nxtc6")
 
-[node name="Botoes" type="Panel" parent="HUD_email"]
+[node name="HUD_tasks" parent="." instance=ExtResource("10_mwfav")]
 layout_mode = 0
-offset_left = 544.0
-offset_top = 593.0
-offset_right = 2773.0
-offset_bottom = 1625.0
-scale = Vector2(0.08182917, 0.08182917)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_yxlcp")
 
-[node name="BtnAprovar" type="Button" parent="HUD_email/Botoes"]
+[node name="HUD_musicas" parent="." instance=ExtResource("11_3p2gp")]
 layout_mode = 0
-offset_left = -293.29395
-offset_right = 826.70605
-offset_bottom = 1032.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ebg2g")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ofn6")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xa025")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_36rkl")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_fs0b5")
-text = "✅ Aprovar"
-icon = ExtResource("10_yxlcp")
-
-[node name="BtnNegar" type="Button" parent="HUD_email/Botoes"]
-layout_mode = 0
-offset_left = 1356.4843
-offset_right = 2461.4844
-offset_bottom = 1032.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ma7h6")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_e2s0e")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_gsxep")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_v0vrg")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dg70y")
-text = "❌ Negar"
-icon = ExtResource("11_ebg2g")
-
-[node name="XpwindowHorizontal" type="Sprite2D" parent="HUD_email"]
-position = Vector2(637.99994, 378.50003)
-scale = Vector2(2.3837752, 2.4072022)
-texture = ExtResource("6_c01mt")
-
-[node name="Seguranca" type="ProgressBar" parent="HUD_email"]
-layout_mode = 0
-offset_left = 57.0
-offset_top = 56.0
-offset_right = 1215.0
-offset_bottom = 83.0
-value = 100.0
-
-[node name="Feedback" type="Label" parent="HUD_email"]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 686.0
-offset_right = 1193.0
-offset_bottom = 735.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Label" type="Label" parent="HUD_email"]
-layout_mode = 0
-offset_left = 344.0
-offset_top = 105.0
-offset_right = 1176.0
-offset_bottom = 630.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Solicitação aparece aqui"
-autowrap_mode = 3
-
-[node name="Avatar" type="TextureRect" parent="HUD_email"]
-visible = false
-material = SubResource("ShaderMaterial_nfivy")
-layout_mode = 0
-offset_left = 66.0
-offset_top = 118.0
-offset_right = 285.0
-offset_bottom = 302.0
-
-[node name="NewContact" type="Sprite2D" parent="HUD_email"]
-position = Vector2(184, 240.00003)
-scale = Vector2(0.27294922, 0.27294922)
-texture = ExtResource("23_ebg2g")
-
-[node name="HUD_tasks" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 1404.0
-offset_top = 155.0
-offset_right = 1843.0
-offset_bottom = 616.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
-
-[node name="Area_arrastar" type="Control" parent="HUD_tasks"]
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 437.0
-offset_bottom = 27.0
-script = ExtResource("6_nxtc6")
-
-[node name="BotaoFechar" type="Button" parent="HUD_tasks"]
-layout_mode = 0
-offset_left = 413.0
-offset_top = 2.0
-offset_right = 437.0
-offset_bottom = 27.0
-
-[node name="XpwindowSquare" type="Sprite2D" parent="HUD_tasks"]
-position = Vector2(220, 232)
-texture = ExtResource("8_jlsqs")
-
-[node name="lbl_manual" type="Label" parent="HUD_tasks"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 44.0
-offset_right = 422.0
-offset_bottom = 449.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
-[node name="HUD_musicas" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 138.0
-offset_top = 204.0
-offset_right = 577.0
-offset_bottom = 665.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
-script = ExtResource("12_bjd11")
-play_icon = ExtResource("17_bb450")
-pause_icon = ExtResource("16_ft6cd")
-music1 = ExtResource("13_3p2gp")
-music2 = ExtResource("14_cvmbd")
-music3 = ExtResource("15_ft6cd")
-
-[node name="Area_arrastar" type="Control" parent="HUD_musicas"]
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 437.0
-offset_bottom = 27.0
-script = ExtResource("6_nxtc6")
-
-[node name="BotaoFechar" type="Button" parent="HUD_musicas"]
-layout_mode = 0
-offset_left = 413.0
-offset_top = 2.0
-offset_right = 437.0
-offset_bottom = 27.0
-
-[node name="XpwindowSquare" type="Sprite2D" parent="HUD_musicas"]
-position = Vector2(220, 232)
-texture = ExtResource("8_jlsqs")
-
-[node name="MusicButton1" type="TextureButton" parent="HUD_musicas"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 57.0
-offset_right = 1055.0
-offset_bottom = 1089.0
-scale = Vector2(0.08000154, 0.08000154)
-
-[node name="Label" type="Label" parent="HUD_musicas/MusicButton1"]
-layout_mode = 0
-offset_left = 1187.477
-offset_top = 299.9942
-offset_right = 3488.477
-offset_bottom = 849.9835
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_font_sizes/font_size = 286
-text = "Voyage"
-
-[node name="MusicButton2" type="TextureButton" parent="HUD_musicas"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 199.99998
-offset_right = 1055.0
-offset_bottom = 1232.0
-scale = Vector2(0.08000154, 0.08000154)
-
-[node name="Label" type="Label" parent="HUD_musicas/MusicButton2"]
-layout_mode = 0
-offset_left = 1187.477
-offset_top = 299.9942
-offset_right = 3488.477
-offset_bottom = 849.9835
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_font_sizes/font_size = 286
-text = "Future"
-
-[node name="MusicButton3" type="TextureButton" parent="HUD_musicas"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 337.99997
-offset_right = 1055.0
-offset_bottom = 1370.0
-scale = Vector2(0.08000154, 0.08000154)
-
-[node name="Label" type="Label" parent="HUD_musicas/MusicButton3"]
-layout_mode = 0
-offset_left = 1187.477
-offset_top = 299.9942
-offset_right = 3488.477
-offset_bottom = 849.9835
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_font_sizes/font_size = 286
-text = "Galaxy"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HUD_musicas"]
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
@@ -404,9 +133,3 @@ offset_bottom = 1086.0
 mouse_filter = 2
 script = ExtResource("20_1nqs0")
 metadata/_edit_lock_ = true
-
-[connection signal="pressed" from="HUD_email/BotaoFechar" to="HUD_email/Area_arrastar" method="_on_botao_pressed"]
-[connection signal="pressed" from="HUD_email/Botoes/BtnAprovar" to="." method="aprovar"]
-[connection signal="pressed" from="HUD_email/Botoes/BtnNegar" to="." method="negar"]
-[connection signal="pressed" from="HUD_tasks/BotaoFechar" to="HUD_tasks/Area_arrastar" method="_on_botao_pressed"]
-[connection signal="pressed" from="HUD_musicas/BotaoFechar" to="HUD_musicas/Area_arrastar" method="_on_botao_pressed"]

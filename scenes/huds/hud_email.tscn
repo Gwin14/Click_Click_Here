@@ -1,0 +1,148 @@
+[gd_scene load_steps=20 format=3 uid="uid://b0acpq3neq8qb"]
+
+[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scripts/gradanddrop.gd" id="1_f58tj"]
+[ext_resource type="Texture2D" uid="uid://dln64td86wcle" path="res://Assets/Windows_icons/Pop up allowed.png" id="2_01ijx"]
+[ext_resource type="Texture2D" uid="uid://djof03ey2qs0w" path="res://Assets/Windows_icons/Pop up blocked.png" id="3_70hga"]
+[ext_resource type="Texture2D" uid="uid://cskwhjce4wkl" path="res://Assets/Windows_icons/xpwindow_horizontal.png" id="4_v8ckk"]
+[ext_resource type="Shader" uid="uid://sa5ogqcnn6hm" path="res://Shaders/profile.gdshader" id="5_eu4wg"]
+[ext_resource type="Texture2D" uid="uid://bb1r027c3p4c2" path="res://Assets/Windows_icons/New Contact.png" id="6_s2i5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlsqs"]
+bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxlcp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebg2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ofn6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa025"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36rkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs0b5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma7h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2s0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsxep"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0vrg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg70y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfivy"]
+shader = ExtResource("5_eu4wg")
+
+[node name="HUD_email" type="Panel"]
+visible = false
+anchors_preset = -1
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 328.0
+offset_top = 200.0
+offset_right = 1608.0
+offset_bottom = 957.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jlsqs")
+
+[node name="BotaoFechar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1251.0
+offset_right = 1275.0
+offset_bottom = 25.0
+
+[node name="Area_arrastar" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1244.0
+offset_bottom = 25.0
+script = ExtResource("1_f58tj")
+
+[node name="Botoes" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 593.0
+offset_right = 2773.0
+offset_bottom = 1625.0
+scale = Vector2(0.08182917, 0.08182917)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yxlcp")
+
+[node name="BtnAprovar" type="Button" parent="Botoes"]
+layout_mode = 0
+offset_left = -293.29395
+offset_right = 826.70605
+offset_bottom = 1032.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ebg2g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ofn6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xa025")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_36rkl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fs0b5")
+text = "✅ Aprovar"
+icon = ExtResource("2_01ijx")
+
+[node name="BtnNegar" type="Button" parent="Botoes"]
+layout_mode = 0
+offset_left = 1356.4843
+offset_right = 2461.4844
+offset_bottom = 1032.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ma7h6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e2s0e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gsxep")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v0vrg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg70y")
+text = "❌ Negar"
+icon = ExtResource("3_70hga")
+
+[node name="XpwindowHorizontal" type="Sprite2D" parent="."]
+position = Vector2(637.99994, 378.50003)
+scale = Vector2(2.3837752, 2.4072022)
+texture = ExtResource("4_v8ckk")
+
+[node name="Seguranca" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 56.0
+offset_right = 1215.0
+offset_bottom = 83.0
+value = 100.0
+
+[node name="Feedback" type="Label" parent="."]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 686.0
+offset_right = 1193.0
+offset_bottom = 735.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 105.0
+offset_right = 1176.0
+offset_bottom = 630.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Solicitação aparece aqui"
+autowrap_mode = 3
+
+[node name="Avatar" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nfivy")
+layout_mode = 0
+offset_left = 66.0
+offset_top = 118.0
+offset_right = 285.0
+offset_bottom = 302.0
+
+[node name="NewContact" type="Sprite2D" parent="."]
+position = Vector2(184, 240.00003)
+scale = Vector2(0.27294922, 0.27294922)
+texture = ExtResource("6_s2i5d")
+
+[connection signal="pressed" from="BotaoFechar" to="Area_arrastar" method="_on_botao_pressed"]

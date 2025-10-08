@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://bk08v1b8xfb2r"]
+
+[ext_resource type="Script" uid="uid://ccjaja5fyvfxs" path="res://scripts/hud_musicas.gd" id="1_yx83y"]
+[ext_resource type="Texture2D" uid="uid://doeccmiek3gsw" path="res://Assets/Windows_icons/Play.png" id="2_g178b"]
+[ext_resource type="Texture2D" uid="uid://yej8c1t5c70t" path="res://Assets/Windows_icons/Stop.png" id="3_1v0it"]
+[ext_resource type="AudioStream" uid="uid://duyt1kfvm7lss" path="res://Musicas/musica1.wav" id="4_xjnuw"]
+[ext_resource type="AudioStream" uid="uid://dlsvofemm3v5" path="res://Musicas/musica2.wav" id="5_6wpen"]
+[ext_resource type="AudioStream" uid="uid://wplkwsryjmmy" path="res://Musicas/musica3.wav" id="6_qohdm"]
+[ext_resource type="Script" uid="uid://bsxhpftfgrmgd" path="res://scripts/gradanddrop.gd" id="7_21eyn"]
+[ext_resource type="Texture2D" uid="uid://b3q51hvu2yvwm" path="res://Assets/Windows_icons/xpwindow_square.png" id="8_lcwxy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
+bg_color = Color(0.99215686, 0.99215686, 0.9764706, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[node name="HUD_musicas" type="Panel"]
+visible = false
+offset_left = 138.0
+offset_top = 204.0
+offset_right = 577.0
+offset_bottom = 665.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q8u5g")
+script = ExtResource("1_yx83y")
+play_icon = ExtResource("2_g178b")
+pause_icon = ExtResource("3_1v0it")
+music1 = ExtResource("4_xjnuw")
+music2 = ExtResource("5_6wpen")
+music3 = ExtResource("6_qohdm")
+
+[node name="Area_arrastar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+script = ExtResource("7_21eyn")
+
+[node name="BotaoFechar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 2.0
+offset_right = 437.0
+offset_bottom = 27.0
+
+[node name="XpwindowSquare" type="Sprite2D" parent="."]
+position = Vector2(220, 232)
+texture = ExtResource("8_lcwxy")
+
+[node name="MusicButton1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 57.0
+offset_right = 1055.0
+offset_bottom = 1089.0
+scale = Vector2(0.08000154, 0.08000154)
+
+[node name="Label" type="Label" parent="MusicButton1"]
+layout_mode = 0
+offset_left = 1187.477
+offset_top = 299.9942
+offset_right = 3488.477
+offset_bottom = 849.9835
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 286
+text = "Voyage"
+
+[node name="MusicButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 199.99998
+offset_right = 1055.0
+offset_bottom = 1232.0
+scale = Vector2(0.08000154, 0.08000154)
+
+[node name="Label" type="Label" parent="MusicButton2"]
+layout_mode = 0
+offset_left = 1187.477
+offset_top = 299.9942
+offset_right = 3488.477
+offset_bottom = 849.9835
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 286
+text = "Future"
+
+[node name="MusicButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 337.99997
+offset_right = 1055.0
+offset_bottom = 1370.0
+scale = Vector2(0.08000154, 0.08000154)
+
+[node name="Label" type="Label" parent="MusicButton3"]
+layout_mode = 0
+offset_left = 1187.477
+offset_top = 299.9942
+offset_right = 3488.477
+offset_bottom = 849.9835
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 286
+text = "Galaxy"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="BotaoFechar" to="Area_arrastar" method="_on_botao_pressed"]
