@@ -146,3 +146,4 @@ scale = Vector2(0.27294922, 0.27294922)
 texture = ExtResource("6_s2i5d")
 
 [connection signal="pressed" from="BotaoFechar" to="Area_arrastar" method="_on_botao_pressed"]
+[connection signal="pressed" from="Botoes/BtnAprovar" to="Area_arrastar" method="_on_btn_aprovar_pressed"]

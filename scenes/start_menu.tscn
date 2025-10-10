@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nxjfj")
 
-[node name="Wallpaper" type="CanvasGroup" parent="."]
+[node name="Wallpaper" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="YellowWallpaper" type="Sprite2D" parent="Wallpaper"]
@@ -70,8 +70,8 @@ position = Vector2(2159, 995.5)
 texture = ExtResource("1_ouf4f")
 metadata/_edit_lock_ = true
 
-[node name="GameIcon" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
+[node name="XpWallpaper" type="Sprite2D" parent="."]
+position = Vector2(967.99994, 527.9999)
 scale = Vector2(0.5199988, 0.5199988)
 texture = ExtResource("4_h61rw")
 

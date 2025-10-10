@@ -29,3 +29,7 @@ func _gui_input(event):
 func _on_botao_pressed():
 	var parent = get_parent()
 	parent.visible = false
+
+
+func _on_btn_aprovar_pressed() -> void:
+	pass # Replace with function body.

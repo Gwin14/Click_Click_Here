@@ -125,3 +125,13 @@ func _on_request_completed(result, response_code, headers, body):
 		else:
 			print("Erro ao carregar imagem:", err)
 		state = "idle"
+
+
+func _on_btn_negar_pressed() -> void:
+	negar()
+	
+
+
+
+func _on_btn_aprovar_pressed() -> void:
+	aprovar()
