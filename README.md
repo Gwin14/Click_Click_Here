@@ -8,21 +8,6 @@
 
 Um jogo educativo de segurança cibernética onde você assume o papel de um analista de TI responsável por identificar e bloquear ataques de phishing e engenharia social em uma empresa.
 
-## 📋 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Características](#características)
-- [Como Jogar](#como-jogar)
-- [Mecânicas do Jogo](#mecânicas-do-jogo)
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Controles](#controles)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Contribuindo](#contribuindo)
-- [Créditos](#créditos)
-- [Licença](#licença)
-
 ## 🎯 Sobre o Projeto
 
 **Click! Click Here!** é um jogo desenvolvido em Godot 4.5 que simula um ambiente corporativo onde o jogador precisa analisar e-mails e solicitações de acesso, decidindo se deve aprovar ou negar cada pedido. O objetivo é ensinar, de forma prática e divertida, como identificar ataques cibernéticos comuns no mundo real.
