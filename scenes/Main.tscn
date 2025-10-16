@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://duk83mclcedy8"]
+[gd_scene load_steps=25 format=3 uid="uid://duk83mclcedy8"]
 
 [ext_resource type="Script" uid="uid://bw5m5jm0kv7ek" path="res://scripts/Main.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cu2x7xxyt5tvv" path="res://Assets/xp_wallpaper.jpg" id="2_rvslj"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://b0acpq3neq8qb" path="res://scenes/huds/hud_email.tscn" id="9_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://isckq06yhwp5" path="res://scenes/huds/hud_tasks.tscn" id="10_mwfav"]
 [ext_resource type="PackedScene" uid="uid://bk08v1b8xfb2r" path="res://scenes/huds/hud_musicas.tscn" id="11_3p2gp"]
+[ext_resource type="Shader" uid="uid://w1fmbds81mdb" path="res://Shaders/virus.gdshader" id="14_mwfav"]
+[ext_resource type="Texture2D" uid="uid://cbeanhq5ic7om" path="res://Assets/caveira.png" id="15_3p2gp"]
+[ext_resource type="AudioStream" uid="uid://coayem1ivnbv7" path="res://Musicas/virus.wav" id="16_cvmbd"]
 [ext_resource type="Shader" uid="uid://cyylhpgyhl8wk" path="res://Shaders/xp.gdshader" id="19_nfivy"]
 [ext_resource type="Script" uid="uid://diyfa0pqk6dyb" path="res://Shaders/xpshader.gd" id="20_1nqs0"]
 
@@ -33,6 +36,18 @@ bg_color = Color(0.27054265, 0.9621605, 0.9999997, 0.38431373)
 shader = ExtResource("19_nfivy")
 shader_parameter/wave_speed = 0.3
 shader_parameter/wave_amplitude = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmy6f"]
+shader = ExtResource("14_mwfav")
+shader_parameter/overlay_opacity = 0.9
+shader_parameter/intensity = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/scanline_strength = 0.06
+shader_parameter/glitch_bands = 12.0
+shader_parameter/noise_scale = 80.0
+shader_parameter/chroma_offset = 0.007
+shader_parameter/tint = Vector3(0.35, 1, 0.35)
+shader_parameter/grain_strength = 0.12
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -148,6 +163,21 @@ offset_bottom = 1086.0
 mouse_filter = 2
 script = ExtResource("20_1nqs0")
 metadata/_edit_lock_ = true
+
+[node name="SomGameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_cvmbd")
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Caveira" type="Sprite2D" parent="GameOverUI"]
+position = Vector2(960, 540)
+texture = ExtResource("15_3p2gp")
+
+[node name="Virus" type="ColorRect" parent="GameOverUI"]
+material = SubResource("ShaderMaterial_qmy6f")
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [connection signal="pressed" from="HUD_email/Botoes/BtnAprovar" to="." method="_on_btn_aprovar_pressed"]
 [connection signal="pressed" from="HUD_email/Botoes/BtnNegar" to="." method="_on_btn_negar_pressed"]

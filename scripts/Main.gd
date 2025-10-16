@@ -2,7 +2,7 @@ extends Control
 
 var solicitacoes = []
 var indice_atual = 0
-var seguranca = 100
+var seguranca = 10
 
 # 🔹 Base de informações da empresa
 var empresa_info = {
@@ -17,6 +17,7 @@ var empresa_info = {
 @onready var feedback = $HUD_email/Feedback
 @onready var lbl_manual = $HUD_tasks/lbl_manual
 @onready var http_request: HTTPRequest = $HTTPRequest
+@onready var game_over_ui: CanvasLayer = $GameOverUI
 
 var state := "idle"
 
@@ -101,6 +102,17 @@ func game_over():
 	lbl_texto.text = "🚨 FIM DE JOGO!"
 	feedback.text = "Obrigado por jogar Cyber Guard!"
 
+	game_over_ui.visible = true
+
+	# 🔹 Tocar som (certifique-se de ter um nó AudioStreamPlayer chamado SomGameOver)
+	if has_node("SomGameOver"):
+		$SomGameOver.play()
+
+	# 🔹 Esperar 6 segundos e fechar o jogo
+	await get_tree().create_timer(6.0).timeout
+	get_tree().quit()
+
+
 # 🔹 callback do HTTPRequest
 func _on_request_completed(result, response_code, headers, body):
 	if result != OK or response_code != 200:
@@ -130,8 +142,6 @@ func _on_request_completed(result, response_code, headers, body):
 func _on_btn_negar_pressed() -> void:
 	negar()
 	
-
-
 
 func _on_btn_aprovar_pressed() -> void:
 	aprovar()
