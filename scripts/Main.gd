@@ -2,7 +2,7 @@ extends Control
 
 var solicitacoes = []
 var indice_atual = 0
-var seguranca = 10
+var seguranca = 100
 
 # 🔹 Base de informações da empresa
 var empresa_info = {
