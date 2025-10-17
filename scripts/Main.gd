@@ -42,7 +42,7 @@ func mostrar_solicitacao():
 		state = "fetch_json"
 		http_request.request("https://randomuser.me/api/")
 	else:
-		game_over()
+		game_over(true)
 
 func aprovar():
 	verificar("aprovar")
@@ -61,7 +61,7 @@ func verificar(escolha):
 		seguranca -= 15
 		barra.value = seguranca
 		if seguranca <= 0:
-			game_over()
+			game_over(false)
 			return
 
 	indice_atual += 1
@@ -98,16 +98,32 @@ func validar(req):
 		_:
 			return "negar"
 
-func game_over():
-	lbl_texto.text = "🚨 FIM DE JOGO!"
-	feedback.text = "Obrigado por jogar Cyber Guard!"
 
-	game_over_ui.visible = true
+func game_over(venceu: bool = false):
+	var titulo := "🏁 Você venceu!" if venceu else "🚨 FIM DE JOGO!"
 
-	# 🔹 Tocar som (certifique-se de ter um nó AudioStreamPlayer chamado SomGameOver)
-	if has_node("SomGameOver"):
-		$SomGameOver.play()
+	var stats := get_endgame_stats(seguranca)
+	var texto := "Segurança final: %d%%\n" % seguranca
+	texto += "\nImpactos:\n"
+	for s in stats:
+		texto += " - " + s + "\n"
+	texto += "\nObrigado por jogar Cyber Guard!"
 
+	# Mostrar tudo no mesmo campo do título (onde aparece "Você venceu!")
+	lbl_texto.text = titulo + "\n\n" + texto
+	feedback.text = ""
+
+	if !venceu:
+		game_over_ui.visible = true
+		
+		if has_node("SomGameOver"):
+			$SomGameOver.play()
+		
+		# 🔹 Esperar 6 segundos e fechar o jogo
+		await get_tree().create_timer(6.0).timeout
+		get_tree().quit()
+
+	
 	# 🔹 Esperar 6 segundos e fechar o jogo
 	await get_tree().create_timer(6.0).timeout
 	get_tree().quit()
@@ -145,3 +161,41 @@ func _on_btn_negar_pressed() -> void:
 
 func _on_btn_aprovar_pressed() -> void:
 	aprovar()
+
+
+# 🔹 Gera estatísticas de impacto com base na porcentagem final de segurança
+func get_endgame_stats(porc: int) -> Array:
+	# Ordenado do maior estrago para o menor
+	var critico := [
+		"Banco de dados comprometido",
+		"Ransomware em servidores críticos",
+		"Exfiltração de dados sigilosos"
+	]
+	var alto := [
+		"Senhas vazadas",
+		"Conta administrativa comprometida",
+		"Credenciais expostas em phishing"
+	]
+	var medio := [
+		"Vazamento de e-mails internos",
+		"Tentativas de intrusão detectadas",
+		"Exposição de metadados públicos"
+	]
+	var baixo := [
+		"Tentativas bloqueadas pelo firewall",
+		"Phishing identificado e reportado",
+		"Boas práticas aplicadas"
+	]
+
+	if porc <= 10:
+		return critico + alto + medio
+	elif porc <= 30:
+		return alto + critico + medio
+	elif porc <= 50:
+		return alto + medio
+	elif porc <= 70:
+		return medio + alto
+	elif porc <= 90:
+		return medio + baixo
+	else:
+		return baixo
