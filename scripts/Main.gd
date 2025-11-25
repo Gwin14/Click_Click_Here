@@ -18,6 +18,9 @@ var empresa_info = {
 @onready var lbl_manual = $HUD_tasks/lbl_manual
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var game_over_ui: CanvasLayer = $GameOverUI
+@onready var btn_aprovar = $HUD_email/Botoes/BtnAprovar
+@onready var btn_negar = $HUD_email/Botoes/BtnNegar
+
 
 var state := "idle"
 
@@ -51,6 +54,9 @@ func negar():
 	verificar("negar")
 
 func verificar(escolha):
+	btn_aprovar.visible = false
+	btn_negar.visible = false
+	
 	var atual = solicitacoes[indice_atual]
 	var esperado = validar(atual)
 
@@ -65,8 +71,12 @@ func verificar(escolha):
 			return
 
 	indice_atual += 1
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(6.0).timeout
 	mostrar_solicitacao()
+	
+	btn_aprovar.visible = true
+	btn_negar.visible = true
+	
 
 func mostrar_manual():
 	var texto = "📘 Manual da Empresa\n"
@@ -80,23 +90,47 @@ func mostrar_manual():
 	lbl_manual.text = texto
 
 func validar(req):
-	match req["tipo"]:
-		"email":
-			var remetente = req["remetente"]
-			if remetente in empresa_info["emails_validos"]:
-				return "aprovar"
-			else:
-				return "negar"
-
-		"funcionario":
-			var nome = req["nome"]
-			if nome in empresa_info["funcionarios"]:
-				return "aprovar"
-			else:
-				return "negar"
-
-		_:
-			return "negar"
+	var remetente = req["remetente"]
+	
+	# 🔹 CORREÇÃO: Verificar se o domínio é válido
+	if not remetente.ends_with("@" + empresa_info["dominio"]):
+		return "negar" # Domínio inválido
+	
+	# 🔹 Se for um email de sistema (suporte/ti), aprovar
+	if remetente in empresa_info["emails_validos"]:
+		return "aprovar"
+	
+	# 🔹 Se for email de funcionário, extrair o nome e verificar
+	# Formato esperado: "nome.sobrenome@empresa.com.br"
+	var parte_local = remetente.split("@")[0] # Ex: "joao.silva"
+	var partes_nome = parte_local.split(".")
+	
+	if partes_nome.size() >= 2:
+		# Normalizar sem acentos para comparação
+		var mapa_acentos = {
+			"joao": "joão",
+			"maria": "maria",
+			"ana": "ana"
+		}
+		
+		# Pegar primeiro nome e sobrenome
+		var primeiro = partes_nome[0].to_lower()
+		var segundo = partes_nome[1].capitalize()
+		
+		# Aplicar mapeamento de acentos se existir
+		if mapa_acentos.has(primeiro):
+			primeiro = mapa_acentos[primeiro]
+		
+		# Capitalizar primeiro nome
+		primeiro = primeiro.capitalize()
+		var nome_completo = primeiro + " " + segundo
+		
+		# Verificar se existe na lista de funcionários
+		if nome_completo in empresa_info["funcionarios"]:
+			return "aprovar"
+	
+	# Se não passou em nenhuma validação, negar
+	return "negar"
 
 
 func game_over(venceu: bool = false):
@@ -124,9 +158,7 @@ func game_over(venceu: bool = false):
 		get_tree().quit()
 
 	
-	# 🔹 Esperar 6 segundos e fechar o jogo
-	await get_tree().create_timer(6.0).timeout
-	get_tree().quit()
+
 
 
 # 🔹 callback do HTTPRequest
